@@ -1,5 +1,5 @@
-export interface MovieDBNowPlaying {
-  dates: Dates
+export interface MovieDBMoviesResponse {
+  dates?: Dates
   page: number
   results: Movie[]
   total_pages: number
@@ -12,11 +12,11 @@ export interface Dates {
 }
 
 export interface Movie {
-  adult: boolean
-  backdrop_path: string
-  genre_ids: number[]
+  adult?: boolean
+  backdrop_path?: string
+  genre_ids?: number[]
   id: number
-  original_language: OriginalLanguage
+  original_language?: OriginalLanguage
   original_title: string
   overview: string
   popularity: number
