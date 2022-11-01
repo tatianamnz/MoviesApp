@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native'
 import { NavigationParams } from '../navigation/params'
 import { StackNavigationProp } from '@react-navigation/stack'
 import movieDB from '../api/movieDB'
+import { MovieDBNowPlaying } from '../interfaces/movieInterface'
 
 type HomeScreenProps = StackNavigationProp<NavigationParams, 'HomeScreen'>
 
@@ -15,8 +16,8 @@ export const HomeScreen = () => {
   }
 
   useEffect(() => {
-    movieDB.get('/now_playing').then(resp => {
-      console.log(resp.data)
+    movieDB.get<MovieDBNowPlaying>('/now_playing').then(resp => {
+      console.log(resp.data.results[0].title)
     })
   }, [])
 
