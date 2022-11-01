@@ -1,5 +1,5 @@
 import React from 'react'
-import { ActivityIndicator, Button, Dimensions, Text, View } from 'react-native'
+import { ActivityIndicator, Button, Dimensions, FlatList, ScrollView, Text, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { NavigationParams } from '../navigation/params'
 import { StackNavigationProp } from '@react-navigation/stack'
@@ -32,20 +32,46 @@ export const HomeScreen = () => {
   }
 
   return (
-    <View style={{ marginTop: top + 20 }}>
-      {/*<MoviePoster movie={cinemaMovies[9]} />*/}
-      {/*<Button title="Ir detalle" onPress={goToDetails} />*/}
-      <View
-        style={{
-          height: 440
-        }}>
-        <Carousel
-          data={cinemaMovies}
-          renderItem={({ item }: any) => <MoviePoster movie={item} />}
-          sliderWidth={windowWidth}
-          itemWidth={300}
-        />
+    <ScrollView>
+      <View style={{ marginTop: top + 20 }}>
+        {/*<MoviePoster movie={cinemaMovies[9]} />*/}
+        {/*<Button title="Ir detalle" onPress={goToDetails} />*/}
+
+        {/* CAROUSEL PRINCIPAL*/}
+        <View
+          style={{
+            height: 440
+          }}>
+          <Carousel
+            data={cinemaMovies}
+            renderItem={({ item }: any) => <MoviePoster movie={item} />}
+            sliderWidth={windowWidth}
+            itemWidth={300}
+          />
+        </View>
+
+        {/* PELÍCULAS POPILARES */}
+        <View style={{ backgroundColor: 'red', height: 260 }}>
+          <Text style={{ fontSize: 30, fontWeight: 'bold' }}>En cine</Text>
+          <FlatList
+            data={cinemaMovies}
+            renderItem={({ item }: any) => <MoviePoster movie={item} height={200} width={140} />}
+            keyExtractor={item => item.id.toString()}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
+        <View style={{ backgroundColor: 'red', height: 260 }}>
+          <Text style={{ fontSize: 30, fontWeight: 'bold' }}>En cine</Text>
+          <FlatList
+            data={cinemaMovies}
+            renderItem={({ item }: any) => <MoviePoster movie={item} height={200} width={140} />}
+            keyExtractor={item => item.id.toString()}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
       </View>
-    </View>
+    </ScrollView>
   )
 }
