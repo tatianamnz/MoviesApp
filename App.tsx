@@ -1,9 +1,8 @@
-import { Text, View } from 'react-native'
+import 'react-native-gesture-handler'
+import React from 'react'
+import { RootNavigator } from './src/navigation/RootNavigator'
 
-export const App = () => {
-  return (
-    <View>
-      <Text>holaaa</Text>
-    </View>
-  )
+const App = () => {
+  return <RootNavigator />
 }
+export default App

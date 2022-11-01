@@ -4,12 +4,19 @@ module.exports = {
     es2021: true,
     node: true
   },
-  extends: ['plugin:react/recommended', 'plugin:react/jsx-runtime', 'standard', 'eslint-config-prettier'],
+  extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier'],
   overrides: [],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module'
+    ecmaVersion: 7,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+      generators: true,
+      impliedStrict: true,
+      experimentalObjectRestSpread: true
+    }
   },
-  plugins: ['react'],
+  plugins: ['react', '@typescript-eslint'],
   rules: {}
 }
