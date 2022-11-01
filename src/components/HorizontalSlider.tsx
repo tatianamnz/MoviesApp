@@ -5,7 +5,7 @@ import React from 'react'
 
 interface Props {
   title?: string
-  movies: Movie
+  movies: Movie[]
 }
 export const HorizontalSlider = ({ title, movies }: Props) => {
   return (

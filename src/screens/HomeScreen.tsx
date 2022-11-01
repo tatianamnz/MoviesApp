@@ -3,9 +3,8 @@ import { ActivityIndicator, Dimensions, ScrollView, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { NavigationParams } from '../navigation/params'
 import { StackNavigationProp } from '@react-navigation/stack'
-import { Carousel } from '../components/Carousel'
+import { CarouselBottom } from '../components/CarouselBottom'
 import { useMovies } from '../hooks/useMovies'
-import { MoviePoster } from '../components/MoviePoster'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { HorizontalSlider } from '../components/HorizontalSlider'
 
@@ -38,7 +37,12 @@ export const HomeScreen = () => {
         {/*<Button title="Ir detalle" onPress={goToDetails} />*/}
 
         {/* CAROUSEL PRINCIPAL*/}
-        <Carousel movieNowPlaying={nowPlaying} windowWidth={windowWidth} />
+        <View
+          style={{
+            height: 440
+          }}>
+          <CarouselBottom windowWidth={windowWidth} movies={nowPlaying} />
+        </View>
         {/* PELÍCULAS POPILARES */}
         <HorizontalSlider title="Populares" movies={popular} />
         <HorizontalSlider title="Top Rated" movies={topRated} />
